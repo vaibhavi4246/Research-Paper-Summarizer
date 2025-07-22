@@ -1,0 +1,21 @@
+version: "3"
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./src/backend/Dockerfile
+    image: rpse_backend:latest
+    container_name: rpse_backend_container
+    ports:
+      - 8000:8000
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./src/frontend/Dockerfile
+    image: rpse_frontend:latest
+    container_name: rpse_frontend_container
+    ports:
+      - 8501:8501
+    volumes:
+      - ./src/frontend:/streamlit_app
